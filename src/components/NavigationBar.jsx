@@ -3,6 +3,7 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const NavigationBar = () => {
           </form>
 
           <Nav style={{ gap: "1rem", width: "200px", marginTop: "10px" }}>
-            <Button
+            <Button as={Link} to={"/Login"}
               className="bg-transparent"
               style={{
                 borderColor: "red",
@@ -83,7 +84,7 @@ const NavigationBar = () => {
             >
               Login
             </Button>
-            <Button
+            <Button as={Link} to={"/Register"}
               className=" bg-danger"
               style={{
                 border: "10px",
