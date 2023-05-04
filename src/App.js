@@ -7,6 +7,11 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import NavigationBar from "./components/NavigationBar";
 import Register from "./pages/Reguster";
+import Login from "./pages/Login";
+import Protected from "./components/Protected";
+import NoTokenAccess from "./components/NoTokenAccess";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const location = useLocation();
@@ -14,16 +19,41 @@ function App() {
     window.scroll({ top: 0 });
   }, [location.pathname]);
   return (
-    <div>
-      <NavigationBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/All" element={<All />} />
-        <Route path="/search" element={<SearchedMovie />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/detail/:id" element={<Detail />} />
-      </Routes>
-    </div>
+    <GoogleOAuthProvider clientId="790220454902-8sh7st63u3v387vvlp130et8k6051tkt.apps.googleusercontent.com">
+      <div>
+        <NavigationBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/All" element={<All />} />
+          <Route path="/search" element={<SearchedMovie />} />
+          <Route
+            path="/Register"
+            element={
+              <NoTokenAccess>
+                <Register />
+              </NoTokenAccess>
+            }
+          />
+          <Route
+            path="/Login"
+            element={
+              <NoTokenAccess>
+                <Login />
+              </NoTokenAccess>
+            }
+          />
+          <Route
+            path="/detail/:id"
+            element={
+              <Protected>
+                <Detail />
+              </Protected>
+            }
+          />
+        </Routes>
+        <ToastContainer theme="colored" />
+      </div>
+    </GoogleOAuthProvider>
   );
 }
 

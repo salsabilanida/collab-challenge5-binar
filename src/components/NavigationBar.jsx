@@ -9,6 +9,15 @@ const NavigationBar = () => {
   const navigate = useNavigate();
   const [searchInput, setsearchInput] = useState("");
   const { name } = useParams();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (name) setsearchInput(name);
@@ -72,29 +81,56 @@ const NavigationBar = () => {
           </form>
 
           <Nav style={{ gap: "1rem", width: "200px", marginTop: "10px" }}>
-            <Button as={Link} to={"/Login"}
-              className="bg-transparent"
-              style={{
-                borderColor: "red",
-                color: "red",
-                borderRadius: "50px",
-                width: "100px",
-                height: "40px",
-              }}
-            >
-              Login
-            </Button>
-            <Button as={Link} to={"/Register"}
-              className=" bg-danger"
-              style={{
-                border: "10px",
-                borderRadius: "30px",
-                width: "100px",
-                height: "40px",
-              }}
-            >
-              Register
-            </Button>
+           {isLoggedIn ? (
+              <>
+                <Button
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setIsLoggedIn(false);
+                    window.location.href = "/";
+                  }}
+                  className=" bg-danger"
+                  style={{
+                    border: "10px",
+                    borderRadius: "30px",
+                    width: "100px",
+                    height: "40px",
+                  }}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  as={Link}
+                  to={"/Login"}
+                  className="bg-transparent"
+                  style={{
+                    borderColor: "red",
+                    color: "red",
+                    borderRadius: "50px",
+                    width: "100px",
+                    height: "40px",
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
+                  as={Link}
+                  to={"/Register"}
+                  className=" bg-danger"
+                  style={{
+                    border: "10px",
+                    borderRadius: "30px",
+                    width: "100px",
+                    height: "40px",
+                  }}
+                >
+                  Register
+                </Button>
+              </>
+            )}
           </Nav>
         </div>
       </Navbar>
