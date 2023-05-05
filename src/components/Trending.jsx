@@ -4,7 +4,9 @@ import { Nav } from "react-bootstrap";
 function Trending() {
   return (
     <div className="d-flex justify-content-between">
-      <h1 style={{ marginTop: "90px", marginLeft: "30px" }}>Popular Movies</h1>
+      <h1 style={{ marginTop: "90px", marginLeft: "30px", color: "white" }}>
+        Popular Movies
+      </h1>
       <div className="d-flex justify-content-between">
         <Nav.Link
           href="/All"

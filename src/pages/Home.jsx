@@ -103,13 +103,12 @@ function Home() {
           ))}
         </Swiper>
       </div>
-      
 
       <div style={{ background: "#f1f5f9" }}>
         <footer>
           <div></div>
           <div>
-            <p>© 2023 Team 2 Binar MovieBox. All Right</p>
+            <p>© 2023 Team 2 Binar. All Right Reserved</p>
           </div>
         </footer>
       </div>

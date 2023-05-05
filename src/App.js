@@ -34,6 +34,7 @@ function App() {
               </NoTokenAccess>
             }
           />
+          <Route path="/" element={<Home />} />
           <Route
             path="/Login"
             element={

@@ -3,7 +3,7 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
@@ -81,7 +81,7 @@ const NavigationBar = () => {
           </form>
 
           <Nav style={{ gap: "1rem", width: "200px", marginTop: "10px" }}>
-           {isLoggedIn ? (
+            {isLoggedIn ? (
               <>
                 <Button
                   onClick={() => {
@@ -95,6 +95,7 @@ const NavigationBar = () => {
                     borderRadius: "30px",
                     width: "100px",
                     height: "40px",
+                    marginLeft: "100px",
                   }}
                 >
                   Logout

@@ -89,7 +89,7 @@ function All() {
             <footer>
               <div></div>
               <div>
-                <p>© 2021 MovieBox. All Right Reserved.</p>
+                <p>© 2023 Team 2 Binar. All Right Reserved</p>
               </div>
             </footer>
           </div>

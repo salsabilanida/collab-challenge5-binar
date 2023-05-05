@@ -9,11 +9,14 @@ function Protected({ children }) {
   useEffect(() => {
     const getMe = async (token) => {
       try {
-        await axios.get("https://km4-challenge-5-api.up.railway.app/api/v1/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        await axios.get(
+          "https://km4-challenge-5-api.up.railway.app/api/v1/auth/me",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
       } catch (error) {
         if (axios.isAxiosError(error)) {
           // If not valid token
@@ -33,6 +36,7 @@ function Protected({ children }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
+      toast.error("Please Login and Register To Open The Details");
       return navigate("/");
     }
 
