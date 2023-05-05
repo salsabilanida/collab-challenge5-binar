@@ -17,7 +17,6 @@ function NoTokenAccess({ children }) {
             },
           }
         );
-
         window.location.href = "/";
       } catch (error) {
         if (axios.isAxiosError(error)) {

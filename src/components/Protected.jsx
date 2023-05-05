@@ -36,7 +36,9 @@ function Protected({ children }) {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      toast.error("Please Login and Register To Open The Details");
+      toast.error("Please Login and Register To Open The Details", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       return navigate("/");
     }
 

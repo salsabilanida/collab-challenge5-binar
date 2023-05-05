@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ const NavigationBar = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
+      toast.success("Login Successfull", {
+        position: toast.POSITION.TOP_LEFT,
+      });
       setIsLoggedIn(true);
     }
   }, []);
