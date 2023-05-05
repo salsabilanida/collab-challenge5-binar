@@ -13,36 +13,48 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      let data = JSON.stringify({
+    if (email === "") {
+      alert("Email is required");
+      return;
+    }
+    if (password === "") {
+      alert("Password is required");
+      return;
+    }
+    if (email !== "" && password !== "") {
+      const data = {
         email,
         password,
-      });
-
-      let config = {
-        method: "post",
-        url: `${process.env.REACT_APP_API}/v1/auth/login`,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
       };
 
-      const response = await axios.request(config);
-      const { token } = response.data.data;
+      try {
+        let data = JSON.stringify({
+          email,
+          password,
+        });
 
-      localStorage.setItem("token", token);
+        let config = {
+          method: "post",
+          url: `${process.env.REACT_APP_API}/v1/auth/login`,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: data,
+        };
 
-      // navigate("/");
+        const response = await axios.request(config);
+        const { token } = response.data.data;
 
-      // Temporary solution
-      window.location.href = "/";
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        toast.error(error.response.data.message);
-        return;
+        localStorage.setItem("token", token);
+
+        window.location.href = "/";
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          toast.error(error.response.data.message);
+          return;
+        }
+        toast.error(error.message);
       }
-      toast.error(error.message);
     }
   };
 
