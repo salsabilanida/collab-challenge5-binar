@@ -1,3 +1,6 @@
+body{
+  caret-color: white;
+}
 .myBG {
   height: 100vh;
   background: url("../assets/image/strange.jpg");
