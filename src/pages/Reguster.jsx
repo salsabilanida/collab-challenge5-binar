@@ -31,9 +31,13 @@ const Register = () => {
             isproceed = false;
             errormessage += ' Password';
         }
-        if (password_conf === null || password === '') {
+        if (password_conf === null || password_conf === '') {
             isproceed = false;
             errormessage += ' Password';
+        }
+        if (password_conf !== password) {
+          isproceed = false;
+          errormessage += ' your password is not the same';
         }
         if (email === null || email === '') {
             isproceed = false;
