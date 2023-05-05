@@ -21,11 +21,11 @@ const Register = () => {
         let errormessage = 'Please enter the value in ';
         if (id === null || id === '') {
             isproceed = false;
-            errormessage += ' Username';
+            errormessage += ' Firstname';
         }
         if (name === null || name === '') {
             isproceed = false;
-            errormessage += ' Fullname';
+            errormessage += ' Lastname';
         }
         if (password === null || password === '') {
             isproceed = false;
@@ -33,7 +33,11 @@ const Register = () => {
         }
         if (password_conf === null || password_conf === '') {
             isproceed = false;
-            errormessage += ' Password';
+            errormessage += ' password conf ';
+        }
+        if (password_conf !== password) {
+          isproceed = false;
+          errormessage += ' your password is not the same';
         }
         if (password_conf !== password) {
           isproceed = false;
