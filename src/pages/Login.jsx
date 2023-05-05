@@ -21,7 +21,7 @@ const Login = () => {
 
       let config = {
         method: "post",
-        url: `${process.env.REACT_APP_API}/v1/auth/login`,
+        url: "https://km4-challenge-5-api.up.railway.app/api/v1/auth/google",
         headers: {
           "Content-Type": "application/json",
         },
