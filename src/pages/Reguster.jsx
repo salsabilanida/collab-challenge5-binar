@@ -57,7 +57,7 @@ const Register = () => {
             e.preventDefault();
             let regobj = { id, name, password, email, password_conf};
             if (IsValidate()) {
-            fetch("http://localhost:8000/user", {
+            fetch("https://km4-challenge-5-api.up.railway.app/api/v1/auth/google", {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(regobj)
